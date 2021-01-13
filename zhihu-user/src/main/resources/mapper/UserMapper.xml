@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.UserMapper">
+
+    <select id="findAllVideo" resultType="com.qf.pojo.vo.Video">
+        SELECT * FROM video
+    </select>
+
+    <insert id="insertVideo">
+        insert into video (user_id,url,date) values (#{userId},#{url},#{date})
+    </insert>
+
+    <select id="findVideo" resultType="com.qf.pojo.vo.Video">
+        SELECT url FROM video WHERE user_id = #{userId}
+    </select>
+
+    <delete id="deleteVideo">
+        delete from video WHERE id = #{id}
+    </delete>
+
+</mapper>

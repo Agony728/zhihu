@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.dao.ArticleMapper">
+
+    <select id="findById" resultType="com.qf.pojo.vo.State">
+        select * from state where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from state where id = #{id}
+    </delete>
+
+    <select id="Enshrine" resultType="com.qf.pojo.vo.EnshrineState">
+        select * from enshrinestate WHERE user_id = #{userId} and state_id = #{stateId} and status = 1
+    </select>
+
+    <insert id="insertEnshrine">
+        insert into enshrinestate (user_id,state_id,status) values (#{userId},#{stateId},#{status})
+    </insert>
+
+    <delete id="deleteEnshrine">
+        delete from enshrinestate where id = #{id}
+    </delete>
+
+    <select id="Praise" resultType="com.qf.pojo.vo.PointPraise">
+        select * from pointpraise WHERE user_id = #{userId} and state_id = #{stateId} and praise = 1
+    </select>
+
+    <insert id="insertPraise">
+        insert into pointpraise (user_id,state_id,praise) values (#{userId},#{stateId},#{praise})
+    </insert>
+
+    <delete id="deletePraise">
+        delete from pointpraise where id = #{id}
+    </delete>
+
+    <select id="lookPraise" resultType="com.qf.pojo.vo.PointPraise">
+        select u.`name` uname,s.id sid,s.`name` sname,s.info,p.user_id userId,p.state_id stateId,p.praise praise
+        from userinfo u,state s,pointpraise p
+        WHERE p.user_id = u.id
+        AND p.state_id = s.id
+        AND s.id = #{stateId}
+    </select>
+
+</mapper>

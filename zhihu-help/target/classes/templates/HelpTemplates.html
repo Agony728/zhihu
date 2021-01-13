@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>用户主页</title>
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    </head>
+    <body>
+        <div id="app">
+            <div id="head-bed"></div>
+            <!--这个是中间的lan-->
+            <div id="head">
+            <b id="font">知乎</b>
+            <div class="button">首页</div>
+            <div class="button">会员</div>
+            <div class="button">发现</div>
+            <div class="button">等你来答</div>
+
+
+
+            <input placeholder="hahahahahaha" style="outline: none;border-radius: 15px;margin-top: 15px;width: 200px;height: 20px;margin-left: 150px"></input>
+            <el-button type="mini" round>提问</el-button>
+
+
+            <div style="float: right">
+                <div style="height: 10px"></div>
+                <el-avatar icon="el-icon-user-solid"></el-avatar>
+            </div>
+
+            <div style="float: right;margin-right: 40px">
+                <div style="height: 15px"></div>
+                <el-badge :value="12" class="item">
+                    <el-button size="mini">评论</el-button>
+                </el-badge>
+            </div>
+        </div>
+        <div align="center">
+            <span th:utext="${help.staticUrl}"></span>
+        </div>
+        </div>
+    </body>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+        })
+    </script>
+    <style scoped>
+        #head-bed{
+            height: 60px;
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+            float: top;
+            z-index: -1;
+            box-shadow:lightblue 0px 0px 7px;
+        }
+        #head{
+            height: 60px;
+            width: 1000px;
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-right: auto;
+            margin-left: auto;
+            float: top;
+        }
+        #font {
+            font-family: KaiTi;
+            font-size: xx-large;
+            color: dodgerblue;
+            float: left;
+            margin-left: -100px;
+            margin-top: 10px;
+        }
+        .button{
+            height: 30px;
+            width: 70px;
+            float: left;
+            margin-left: 10px;
+            margin-top: 20px;
+            color: steelblue;
+        }
+        .button:hover{
+            color: black;
+            font-size: small;
+        }
+    </style>
+</html>

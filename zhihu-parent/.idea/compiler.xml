@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="zhihu-user" />
+        <module name="zhihu-article" />
+        <module name="zhihu-help" />
+        <module name="zhihu-pojo" />
+        <module name="zhihu-search" />
+        <module name="zhihu-utils" />
+        <module name="zhihu-eureka" />
+        <module name="zhihu-zuul" />
+        <module name="zhihu-config" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="zhihu-article" options="-parameters" />
+      <module name="zhihu-config" options="-parameters" />
+      <module name="zhihu-eureka" options="-parameters" />
+      <module name="zhihu-help" options="-parameters" />
+      <module name="zhihu-pojo" options="-parameters" />
+      <module name="zhihu-search" options="-parameters" />
+      <module name="zhihu-user" options="-parameters" />
+      <module name="zhihu-utils" options="-parameters" />
+      <module name="zhihu-zuul" options="-parameters" />
+    </option>
+  </component>
+</project>

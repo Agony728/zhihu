@@ -1,0 +1,21 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: zhihu-config
+#  profiles:
+#    active: native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Agony728/zhihu-config.git
+          search-paths: zhihu-config
+          default-label: main
+#        native:
+#          search-locations: classpath:yml/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka

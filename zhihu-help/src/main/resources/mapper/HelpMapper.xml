@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.dao.HelpMapper">
+
+    <select id="findAllType" resultType="com.qf.pojo.vo.Question">
+        select qt.id qtid,qt.classify from question_type qt
+    </select>
+
+    <select id="findByQtid" resultType="com.qf.pojo.vo.Question">
+        select q.id qid,q.info qInfo,q.`name`,qt.id qtid,qt.classify
+        from question q,question_type qt,middle_question_type mqt
+        WHERE mqt.qid = q.id
+        AND mqt.qtid = qt.id
+        AND qt.id = #{qtid}
+    </select>
+
+    <select id="findAll" resultType="com.qf.pojo.vo.Question">
+        select q.id qid,name,qt.id qtid
+        FROM question q,question_type qt,middle_question_type mqt
+        WHERE mqt.qid = q.id
+        AND mqt.qtid = qt.id
+    </select>
+
+    <select id="findByQid" resultType="com.qf.pojo.vo.Question">
+        select info qInfo FROM question q WHERE q.id = #{qid}
+    </select>
+
+    <select id="findById" resultType="com.qf.pojo.vo.Question">
+        select id qid,name,info qInfo,staticUrl from question where id = #{qid}
+    </select>
+
+    <update id="updateById" parameterType="com.qf.pojo.vo.Question">
+        UPDATE question set staticUrl = #{staticUrl} where id = #{qid}
+    </update>
+
+    <select id="findUrl" resultType="string">
+        SELECT staticUrl from question where id = #{qid}
+    </select>
+
+</mapper>

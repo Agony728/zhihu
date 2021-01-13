@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    </head>
+    <body>
+        <form>
+            sname :<input type="text" th:value="${article.name}">
+            <input th:utext="">
+        </form>
+        <div id="app">
+            <el-input v-model="input" placeholder="请输入内容" style="width: 500px"></el-input>
+            <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>
+            <el-row>
+                <el-col style="width: 50%" v-for="(o, index) in shopList" :key="index">
+                    <el-card shadow="hover" :body-style="{ padding: '0px' }">
+                        <div style="padding: 14px;">
+                            <span v-html="o.sname"></span>
+                            <div class="bottom clearfix">
+                                <span v-html="o.sinfo"></span>
+                            </div>
+                            <div class="bottom clearfix">
+                                <span>{{o.uname}}</span>
+                            </div>
+                        </div>
+                    </el-card>
+                </el-col>
+            </el-row>
+        </div>
+    </body>
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                shopList:[]
+            },
+            mounted(){
+                axios.get("http://localhost:8081/article/findAll")
+                    .then(res=>{
+                        if (res.data.code==200){
+                            console.log(res)
+                            this.shopList=res.data.data
+                            console.log(this.shopList)
+                        }
+                    })
+            }
+
+        })
+    </script>
+</html>
