@@ -77,7 +77,7 @@ public class HelpServiceImpl implements HelpService {
         context.setVariable("help",question);
         String articleTemplates = templateEngine.process("HelpTemplates", context);
         //System.out.println(articleTemplates);
-        UUID uuid = UUID.randomUUID();
+        //UUID uuid = UUID.randomUUID();
         BaseResp baseResp = uploadUtils.uploadString(articleTemplates);
         Object data = baseResp.getData();
         question.setStaticUrl(data.toString());
